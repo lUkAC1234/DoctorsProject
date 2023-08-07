@@ -1,0 +1,142 @@
+header {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0;
+    background: var(--white);
+    z-index: 10;
+}
+
+.header-form {
+    width: 100%;
+}
+
+.input-box {
+    width: 76rem;
+
+    .header-search-input {
+        padding: 0.5rem;
+        width: 100%;
+        border: none;
+        outline: none;
+        margin-left: 2rem;
+        border-radius: 0 32px 32px 0;
+        border: 2px solid #ccc;
+        transition: all 0.5s;
+    }
+}
+
+.header-btn {
+    position: absolute;
+    background: #fff;
+    padding: 0.48rem;
+    border-radius: 32px 0 0 32px;
+    outline: none !important;
+    border: 2px solid #ccc;
+    border-right: none;
+    transition: all 0.5s;
+
+    i {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .input-box {
+        width: 55rem;
+    }
+
+    @media screen and (max-width: 992px) {
+        .input-box {
+            width: 35rem;
+        }
+
+        @media screen and (max-width: 700px) {
+            .input-box {
+                width: 25rem;
+                margin: 0 5%;
+            }
+
+            @media screen and (max-width: 550px) {
+                .input-box {
+                    width: 23.5rem;
+                    margin: 0 10%;
+                }
+                @media screen and (max-width: 460px) {
+                    .input-box {
+                        width: 20rem;
+                        margin: 0 5%;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.header-links {
+    display: grid;
+    place-content: center;
+    margin-top: 1rem;
+}
+
+.header-links-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+        color: #fff;
+
+        &:nth-child(even) {
+            color: #5865F2;
+            li {
+                background: #fff;
+                border: 1px solid #5865F2;
+            }
+        }
+
+        &:last-child {
+            li {
+                border: none;
+                min-width: unset;
+                i {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        li {
+            background: #5865F2;
+            padding: 0.3rem 1rem;
+            min-width: 7rem;
+            display: grid;
+            place-content: center;
+            place-items: center;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 8px;
+            border: 1px solid transparent;
+        }
+    }
+
+}
+
+@media screen and (max-width: 460px) {   
+    .header-links-container {
+        a {
+            li {
+                min-width: 5rem;
+            }
+        }
+    
+    }
+}
+
+@media screen and (max-width: 400px) {   
+    .header-links-container {
+        flex-wrap: wrap;
+    }
+}

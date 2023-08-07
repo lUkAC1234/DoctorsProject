@@ -1,0 +1,15 @@
+{% load static %}
+
+<header>
+    <nav>
+        <div class="header-links">
+            <ul class="header-links-container">
+                <a href="{% url 'main:profile' %}"><li>Profile</li></a>
+                <a href="{% url 'main:payment' %}"><li>Payment</li></a>
+                <a href="{% url 'main:index' %}"><li>Home</li></a>
+                <a href="{% url 'main:logout' %}"><li><i class="fa-solid fa-right-from-bracket"></i></li></a>
+                
+            </ul>
+        </div>
+    </nav>
+</header>

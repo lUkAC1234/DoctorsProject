@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'main/scss/global.css' %}">
+    <title>{{ request.title }}</title>
+</head>
+
+<body>
+    <main class="sign">
+        <section class="sign-section">
+            <form class="sign-form" action="{% url 'main:signup' %}" method="POST">
+                {% csrf_token %}
+                <div class="sign__wrapper">
+                    <div class="left-side-image-container">
+                        <h1 class="left-side-title">Sign up and join to us</h1>
+                        <img src="{% static 'main/images/signup/register.svg' %}" alt="">
+                    </div>
+                    <div class="sign-inputs-container">
+                        <h1 class="sign-title">Sign up</h1>
+                        <div class="sign-input-column">
+                            <input type="text" name="username" placeholder="Username">
+                        </div>
+                        <div class="sign-input-column">
+                            <input type="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="sign-input-column">
+                            <input type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="sign-input-column">
+                            <input type="password" name="confirm_password" placeholder="Confirm password">
+                        </div>
+                        
+                        <button type="submit">Sign up</button>
+                    </div>
+                    <div class="signup-checking-container">
+                        <h1 class="sign-checking-text">Already have an account ? <a href="{% url 'main:signin' %}">Sign in</a></h1>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

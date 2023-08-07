@@ -1,0 +1,13 @@
+@import "./helpers/_helpers";
+@import "./animations/_animations";
+@import "./base/_base";
+@import "./components/_components";
+@import "./layout/_layout";
+@import "./plugins/_plugins";
+@import "./templates/_templates";
+@import "./templates/pages/layout";
+
+
+// FONTS
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Open+Sans:wght@300&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');

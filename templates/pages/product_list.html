@@ -1,0 +1,28 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'layout/header.html' %}
+
+<main class="payment">
+    <h1>Список товаров</h1>
+    <ul>
+        {% for product in products %}
+        <li>{{ product.name }} - {{ product.price }}$</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Оформить заказ:</h2>
+    <form id="payment-form">
+        <!-- Добавьте поля формы здесь для выбора товара и ввода кредитной карты -->
+        <input type="submit" value="Оплатить">
+    </form>
+</main>
+
+{% endblock %}
+
+
+{% block js_block %}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{% static 'main/scripts/js/payment.js' %}"></script>
+{% endblock %}

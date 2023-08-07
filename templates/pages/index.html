@@ -1,0 +1,44 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'layout/headersearch.html' %}
+<main class="main">
+    <section class="video__wrapper">
+        <div class="video-container">
+            {% for video in videos %}
+            <div class="video-column">
+                <a href="{% url 'main:videodetail' pk=video.pk slug=video.slug%}">
+                    <div class="video-column-video-container">
+                        <img src="{{ video.preload_image.url }}" alt="">
+                    </div>
+                    <div class="video-column-text-container">
+                        <div class="profile-column">
+                            <div class="profile-img">
+                                <img src="{{ video.user.user_image.url }}" alt="">
+                            </div>
+                            <div class="profile-user-info">
+                                <span class="user">{{ video.user }}</span>
+                                <span class="created-at">{{ video.created_at|timesince }} ago</span>
+                            </div>
+                        </div>
+                        <h1 class="title">{{ video.short_description }}</h1>
+                        <div class="icons-container">
+                            <a href=""><i class="fa-sharp fa-solid fa-eye"> <span>0</span></i></a>
+
+                            <a href=""><i class="fa-solid fa-message"> {{ video.comment.count }}<span></span></i></a>
+                            <a href=""><i class="fa-sharp fa-regular fa-face-smile"> <span>100</span></i></a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block js_block %}
+<script>
+</script>
+{% endblock %}

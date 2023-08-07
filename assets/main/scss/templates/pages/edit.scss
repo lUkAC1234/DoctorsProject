@@ -1,0 +1,22 @@
+.edit-container {
+    display: grid;
+    place-items: center;
+    padding-top: 10rem;
+}
+
+.edit-container form {
+    display: grid;
+    gap: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 1rem;
+
+    button,
+    a {
+        min-width: 7rem;
+        outline: none !important;
+    }
+}

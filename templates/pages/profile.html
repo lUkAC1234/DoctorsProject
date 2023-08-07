@@ -1,0 +1,56 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'layout/header.html' %}
+<main>
+    <section class="profile">
+        <div class="profile__wrapper">
+            <div class="profile-image-container">
+                <img src="{% static 'main/images/main-page/user.jpg' %}" alt="">
+            </div>
+            <div class="profile-info-container">
+                <div class="user-info-container">
+                    <div class="user-input-container">
+                        <h1>User Name</h1>
+                        <span>{{ request.user }}</span>
+                    </div>
+                    <div class="user-input-container">
+                        <h1>First Name</h1>
+                        <span>{{ request.user.first_name }}</span>
+                    </div>
+                    <div class="user-input-container">
+                        <h1>Last Name</h1>
+                        <span>{{ request.user.last_name }}</span>
+                    </div>
+                    <div class="user-input-container">
+                        <h1>Email</h1>
+                        <span>{{ request.user.email }}</span>
+                    </div>
+
+                        <div class="edit-profile-link-container">
+                            <a href="{% url 'main:edit' %}" class=""><span>Edit profile</span></a>
+                        </div>
+                    </a>
+                </div>
+                <h1 class="payment-profile-title">Your packages</h1>
+                <div class="payment-info-container">
+                    <div class="payment-column">
+                        <div class="payment-image-container">
+                            <img src="{% static 'main/images/signup/register.svg' %}" alt="">
+                        </div>
+                        <div class="payment-info">
+                            <h1 class="payment-time">10 hours 30 minutes</h1>
+                            <span class="payment-class">1 month type</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+
+{% block js_block %}
+{% endblock %}

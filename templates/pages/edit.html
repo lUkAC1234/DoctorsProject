@@ -1,0 +1,48 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'layout/header.html' %}
+<div class="container edit-container">
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
+        <form action="{% url 'main:edit' %}" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <h3 class="text-center">Edit Personal Information</h3>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="profile_details_text">First Name:</label>
+                        <input type="text" name="first_name" class="form-control" value="{{ request.user.first_name }}" >
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="profile_details_text">Last Name: </label>
+                        <input type="text" name="last_name" class="form-control" value="{{ request.user.last_name }}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label class="profile_details_text">Email Address:</label>
+                        <input type="email" name="email" class="form-control" value="{{ request.user.email }}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 submit">
+                    <div class="form-group edit-buttons">
+                        <button type="submit" class="btn" style="background: #5865F2; color: #fff;">Submit</button>
+                        <a href="{% url 'main:profile' %}" class="btn" style="border: 1px solid #5865F2; color: #5865F2;">Go back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js_block %}
+{% endblock %}

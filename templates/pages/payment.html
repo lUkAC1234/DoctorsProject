@@ -1,0 +1,79 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'layout/header.html' %}
+
+<main class="payment">
+
+  <section class="section-4">
+    <div class="section-4-1">
+      <div class="section-main">
+        <h1>Flexible Plans for Everyone</h1>
+        <p>Our plans are made for eveyone. Whether you're just starting out on social media, or have been on there
+          for a long time, we have a plan that's right for you.</p>
+      </div>
+    </div>
+    <div class="section-4-2">
+      <div class="section-main">
+        <div class="pricing-body">
+          <div class="pricing-body-plans">
+
+            <div class="active" id="pricing__monthly__plan">
+              <div>
+                <div class="card">
+                  <div class="card-header">
+                    <h2 class="card-price">$999<span>/year</span></h2>
+                    <p>Perfect plan if you're just starting out.</p>
+                  </div>
+                  <div class="card-body">
+                    <ul>
+                      <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt="">
+                        <p>Something more</p>
+                      </li>
+                      <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt="">
+                        <p>Something more</p>
+                      </li>
+                      <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt="">
+                        <p>Something more</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-footer">
+                    <a href="{% url 'main:checkout' %}">Subscribe Now</a>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header">
+                    <h2 class="card-price">$111<span>/mo</span></h2>
+                    <p>Perfect plan if you're just starting out.</p>
+                  </div>
+                  <div class="card-body">
+                    <ul>
+                      <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt="">
+                        <p>Something</p>
+                      </li>
+                      <li><img src="https://rvs-product-pricing-page.vercel.app/assets/Checkmark.svg" alt="">
+                        <p>Something</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-footer">
+                    <a href="{% url 'main:checkout' %}">Subscribe Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{% endblock %}
+
+
+{% block js_block %}
+{% endblock %}
