@@ -22,6 +22,7 @@
                             <span class="created-at">{{ video.created_at|timesince }} ago</span>
                         </div>
                     </div>
+                    <h1 class="title" style="color: #5865F2;">{{ video.name }}</h1>
                     <h1 class="title">{{ video.short_description }}</h1>
                     <div class="icons-container">
                         <a href=""><i class="fa-sharp fa-solid fa-eye"> <span>{{ video.comments.count }}</span></i></a>
