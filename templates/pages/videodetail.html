@@ -3,9 +3,65 @@
 
 {% block content %}
 {% include 'layout/header.html' %}
-<main>
+<main class="videomain">
     <section class="videodetail">
-        <h1>Hello from video detail</h1>
+        <a href="{% url 'main:index' %}" class="go-back-link">
+            Go back
+        </a>
+        <div class="video-detail-container">
+            <video src="{{ video.video.url }}" controls></video>
+        </div>
+        <div class="content-section">
+            <div class="content-container">
+                <h1 class="title">{{ video.name }}</h1>
+                <p class="text">{{ video.description }}</p>
+            </div>
+            <div class="comment-container">
+                <div class="comment-title">There you can text your feedback or ideas</div>
+                <div class="comment-form-container">
+                    <form action="{% url 'main:videodetail' id=video.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="comment-form-input-container">
+                            <input type="text" name="text" maxlength="100" required id="id_text"
+                                placeholder="Text your feedback there">
+                        </div>
+                        <div class="comment-form-btn-container">
+                            <button type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+                {% if video.comments.count == 1 %}
+                <div class="div-comments-count">{{ video.comments.count }} feedback</div>
+                {% elif video.comments.count <= 0 %} 
+                <div class="div-comments-count">
+                    No feedbacks yet 
+                    <i class="fa-solid fa-person-falling" style="font-size: 1.125rem;"></i>
+                </div>
+                {% else %}
+                <div class="div-comments-count">{{ video.comments.count }} feedbacks</div>
+                {% endif %}
+            </div>
+            <div class="user-comments-container">
+                {% for item in video.comments.all %}
+                    <div class="user-comment">
+                        <div class="user-comment-profile-content">
+                            <img src="{{ item.user.user_image.url }}" alt="">
+                            <h1 class="user-comment-username">{{ item.user }}</h1>
+                        </div>
+                        <div class="user-comment-text-container">
+                            <p class="comment-text">{{ item.text }}</p>
+                        </div>
+                        <div class="comment-date-container">
+                            <span class="date">{{ item.created_at|timesince }} ago</span>
+                            {% if request.user == item.user %}
+                                <a href="{% url 'main:commentdelete' pk=item.pk %}" class="delete-link">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        </div>
     </section>
 </main>
 {% endblock %}

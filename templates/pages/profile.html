@@ -7,7 +7,7 @@
     <section class="profile">
         <div class="profile__wrapper">
             <div class="profile-image-container">
-                <img src="{% static 'main/images/main-page/user.jpg' %}" alt="">
+                <img src="{{ request.user.user_image.url }}" alt="">
             </div>
             <div class="profile-info-container">
                 <div class="user-info-container">

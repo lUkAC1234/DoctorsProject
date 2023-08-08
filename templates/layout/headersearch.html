@@ -7,7 +7,8 @@
                 <button class="header-btn">
                     <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                 </button>
-                <input type="text" class="header-search-input" placeholder="Search for people, tags, folders, Spaces and Looms  ">
+                <input type="search" class="header-search-input" name="search" value="{{ request.GET.search }}"
+                           placeholder="Search by name">
             </div>
             <div class="header-links">
                 <ul class="header-links-container">

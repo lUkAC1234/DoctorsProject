@@ -1,0 +1,50 @@
+.delete-comment-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    height: 75vh;
+}
+
+.delete-comment-container {
+    .title {
+        background-image: linear-gradient(45deg, #5865F2, #e52e71, #6610f2);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2rem;
+    }
+}
+
+.delete-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    button,
+    a {
+        width: 10rem;
+        padding: 0.5rem;
+        background: #5865F2;
+        border: none; 
+        outline: none;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.125rem;
+        color: #fff;
+        border-radius: 4px;
+
+        &:hover {
+            background: #4d59e0;
+        }
+    }
+
+    a {
+        background: #585757;
+
+        &:hover {
+            background: #4c4c4c;
+        }
+    }
+}

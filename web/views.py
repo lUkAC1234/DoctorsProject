@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, CreateView, DeleteView
+from django.views.generic.edit import FormView
 from .forms import RegistrationForm, LoginForm, AccountForm, VideosForm, CommentsForm
 from .models import UserModel, VideosModel, Commentsmodel
 from django.core.exceptions import ValidationError
@@ -8,11 +9,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin 
+from django.db.models import Q
+from django.urls import reverse_lazy
 def index(request):
     if request.user.is_authenticated:
         template_name = "pages/index.html"
         videos = VideosModel.objects.all()
         comments = Commentsmodel.objects.all()
+        search = request.GET.get('search', '')
+        if search: videos = videos.filter(Q(name__icontains=search))
         return render(request, template_name, context={
             'videos': videos,
             'comments': comments,
@@ -20,9 +25,33 @@ def index(request):
     else:
         return redirect("main:signin")
     
-class VideoDetail(LoginRequiredMixin, DetailView):
-    template_name = "pages/videodetail.html"
-    model = VideosModel
+def video_detail(request, id):
+    template_name = 'pages/videodetail.html'
+    video = VideosModel.objects.get(id=id)
+    form = CommentsForm
+    if request.method == "POST":
+        form = CommentsForm(data=request.POST)
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.post = video
+            data.user = request.user
+            data.save()
+            detail_url = reverse('main:videodetail', args=[video.id])
+            return redirect(detail_url)
+    return render(request, template_name, context={
+        'video': video,
+        'comment_form': form,
+    })
+
+class commentDeleteView(LoginRequiredMixin, DeleteView):
+    model = Commentsmodel
+    template_name = 'pages/commentdelete.html'
+    success_url = reverse_lazy('main:index')  # Change this to your home URL
+
+    def get_success_url(self):
+        post_id = self.object.post_id
+        detail_url = reverse('main:videodetail', args=[post_id])  # Adjust the URL name
+        return detail_url
 
 def signup(request):
     if request.user.is_authenticated:
@@ -88,7 +117,9 @@ def edit(request):
             user = get_object_or_404(UserModel, id=request.user.id)
             form.save()
             return redirect('main:profile')
-    return render(request, template_name)
+    return render(request, template_name, context={
+        'form': form
+    })
 
 
 class Payment(LoginRequiredMixin, TemplateView):
